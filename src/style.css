@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto';
+}
+h1 {
+    background-color: #304ffe;
+    padding:1%;
+    color: white;
+    box-shadow: 5px 0 #eeeeee;
+}
+#sidebar {
+    position: fixed;
+    background-color: #eeeeee;
+    height: 100%;
+    width: 22%;
+    border-right: 1px solid #bcbcbc;
+}
+#main-container {
+    margin-top: 2%;
+    margin-left: 24%;
+    background-color: #eeeeee;
+    border: 1px solid #bcbcbc;
+    border-radius: 16px;
+    min-height: 512px;
+}
+#list-title {
+    font-size: 24px;
+    padding: 1%;
+}
+#flex-container {
+    border-radius: 16px;
+    background-color: #bcbcbc;
+}

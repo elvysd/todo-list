@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -10,13 +10,12 @@ module.exports = {
   devServer: {
       contentBase: './dist',
   },
-  plugins: [
-      new HtmlWebpackPlugin({
-          title: 'Todo List',
-
-
-      }),
-    ],
+  
+  //plugins: [
+      //new HtmlWebpackPlugin({
+          //title: 'Todo List',
+      //}),
+    //],
   mode: 'development',
   target: 'web',
   output: {
