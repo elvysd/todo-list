@@ -6,8 +6,10 @@
     @use "@material/button";
     @include button.core-styles;
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    @use "@material/fab";
+    @include fab.core-styles;
+
 </style>
 
 <head>
@@ -16,6 +18,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script defer src="index.bundle.js"></script>
   <script defer src="print.bundle.js"></script>
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -26,14 +32,24 @@
   <div id="main-container">
     <div id="toDo-container"> 
       <div id="list-title">To-Do</div>
-      <div id='flex=container'>sdsdsd sds</div>
+      <div id='flex-container'>
+        sds sdsddsfdf sds
+        <div id='delete'>✖</div>
+        <div id='checkmark'>✔</div>
+      </div>
     </div>
     <div id="completed-container">
-      <div id='flex=container'></div>
+      <div id="list-title">Completed</div>
+      <div id='flex-container'></div>
     </div>
   </div>
 
+  <button class="mdc-fab mdc-fab--mini mdc-fab--touch foo-button">
+    <div class="mdc-fab"></div>
+    <span class="material-icons mdc-fab__icon">add</span>
+  </button>
+
 </body>
-<script src="index.js"> </script>
+<script src="index.bundle.js"> </script>
 
 </html>
