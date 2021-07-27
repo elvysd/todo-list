@@ -29,6 +29,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@material/data-table": "^11.0.0",
+    "@material/drawer": "^11.0.0",
     "@material/fab": "^11.0.0",
     "@material/theme": "^11.0.0",
     "html-loader": "^2.1.2",

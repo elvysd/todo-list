@@ -12,38 +12,22 @@ h1 {
     color: white;
     box-shadow: 5px 0 #eeeeee;
 }
-#sidebar {
-    position: fixed;
-    background-color: #eeeeee;
-    height: 100%;
-    width: 22%;
-    border-right: 1px solid #bcbcbc;
+.mdc-data-table {
+    min-height: 95vh;
+    position: absolute;
+    min-width: 70vw;
+}
+.mdc-data-table__header-cell {
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 #main-container {
-    margin-top: 1%;
-    margin-left: 23%;
-    margin-right: 1%;
-    background-color: #eeeeee;
-    border: 1px solid #bcbcbc;
-    border-radius: 16px;
-    min-height: 512px;
-}
-#list-title {
-    font-size: 24px;
-    padding: 1%;
-}
-#flex-container {
-    margin: 1%;
-    padding: 1%;
-    background-color: #e2e2e2;
-    border-radius: 16px;
-}
-#checkmark {
-    float: right;
-    margin-right: 1%;
+    margin-top: 10px;
+    margin-left: 270px;
 }
 #delete {
-    float: right;
+    bottom: 1220px;
 }
 .mdc-fab {
     width: 80px;
@@ -51,5 +35,13 @@ h1 {
     position: fixed;
     border-radius: 50%;
     background-color: #304ffe;
-
+}
+#fab-container {
+    bottom: 120px;
+    right: 120px;
+    position: fixed;
+}
+.mdc-drawer {
+    height: 100vh;
+    position: absolute;
 }
