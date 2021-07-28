@@ -25,7 +25,39 @@ listEl.addEventListener('click', (event) => {
 
 
 
-import {MDCDataTable} from '@material/data-table';
+import {
+    MDCDataTable
+} from '@material/data-table';
 const dataTable = new MDCDataTable(document.querySelector('.mdc-data-table'));
+
 // Main code
+
+var btn = document.getElementById('mdcFab');
+fabBackground.style.display = "none"
+btn.onclick = function() {
+
+    if (fabBackground.style.display == "none") {
+    fabContainer2.style.display = "block";
+    fabContainer3.style.display = "block";
+    fabBackground.style.display = "block";
+    }
+    else {
+    fabContainer2.style.display = "none";
+    fabContainer3.style.display = "none";
+    fabBackground.style.display = "none";       
+    }
+}
+
+
+var mdcBackground = document.getElementById('fabBackground');
+
+window.onclick = function(event) {
+
+    if (event.target == mdcBackground) {
+        console.log("ss")
+        fabContainer2.style.display = "none";
+        fabContainer3.style.display = "none";
+        fabBackground.style.display = "none";
+    }
+}
 
