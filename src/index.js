@@ -30,6 +30,7 @@ import {
 } from '@material/data-table';
 const dataTable = new MDCDataTable(document.querySelector('.mdc-data-table'));
 
+
 // Main code
 
 var btn = document.getElementById('mdcFab');
