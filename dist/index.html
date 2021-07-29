@@ -29,8 +29,7 @@
   <meta charset="utf-8">
   <title>Todo List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script defer src="index.bundle.js"></script>
-  <script defer src="print.bundle.js"></script>
+
   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -70,7 +69,7 @@
   <div id="main-container">
     <div class="mdc-data-table">
       <div class="mdc-data-table__table-container">
-        <table class="mdc-data-table__table" aria-label="Dessert calories">
+        <table class="mdc-data-table__table" aria-label="">
           <thead>
             <tr class="mdc-data-table__header-row">
               <th class="mdc-data-table__header-cell mdc-data-table__header-cell--checkbox" role="columnheader" scope="col">
@@ -88,9 +87,9 @@
               </th>
               <th class="mdc-data-table__header-cell" id="delete" role="columnheader" scope="col"><span class="material-icons-round">delete_outline</span></th>
               <th class="mdc-data-table__header-cell" role="columnheader" scope="col" id="tasks-row">Tasks</th>
-              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Priority</th>
               <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date</th>
-              <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Time</th>
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Time</th>
+              <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Priority</th>
             </tr>
           </thead>
           <tbody class="mdc-data-table__content">
@@ -110,8 +109,16 @@
               <th class="mdc-data-table__cell" scope="row" id="u0"> <span class="material-icons mdc-list-item__graphic" aria-hidden="true">close</span></th> 
               <th class="mdc-data-table__cell" scope="row" id="u0" contenteditable="true">Play</th>
               <td class="mdc-data-table__cell"><input type ="date"></td>
-              <td class="mdc-data-table__cell">Triaged</td>
-              <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
+              <td class="mdc-data-table__cell">
+                <input type="time" id="time" name="appt">
+              </td>
+              <td class="mdc-data-table__cell  mdc-data-table__cell--numeric" scope="row" id="u0" >
+                  <select name="priority" id ="priority">
+                    <option value="high">High</option>
+                    <option value="med">Medium</option>
+                    <option value="low">Low</option>
+                  </select>
+              </td>
             </tr>
             <tr data-row-id="u1" class="mdc-data-table__row mdc-data-table__row--selected" aria-selected="true">
               <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
@@ -132,45 +139,6 @@
               <td class="mdc-data-table__cell">Triaged</td>
               <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
             </tr>
-            <tr data-row-id="u2" class="mdc-data-table__row mdc-data-table__row--selected" aria-selected="true">
-              <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                <div class="mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--selected">
-                  <input type="checkbox" class="mdc-checkbox__native-control" checked aria-labelledby="u2"/>
-                  <div class="mdc-checkbox__background">
-                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                      <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                    </svg>
-                    <div class="mdc-checkbox__mixedmark"></div>
-                  </div>
-                  <div class="mdc-checkbox__ripple"></div>
-                </div>
-              </td>
-              <th class="mdc-data-table__cell" scope="row" id="u0"> <span class="material-icons mdc-list-item__graphic" aria-hidden="true">close</span></th>               
-              <th class="mdc-data-table__cell" scope="row" id="u2" contenteditable="true">monarch: prod shared ares-managed-features-provider-heavy</th>
-              <td class="mdc-data-table__cell">Minor</td>
-              <td class="mdc-data-table__cell">Not triaged</td>
-              <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
-            </tr>
-            <tr data-row-id="u3" class="mdc-data-table__row">
-              <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                <div class="mdc-checkbox mdc-data-table__row-checkbox">
-                  <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u3"/>
-                  <div class="mdc-checkbox__background">
-                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                      <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                    </svg>
-                    <div class="mdc-checkbox__mixedmark"></div>
-                  </div>
-                  <div class="mdc-checkbox__ripple"></div>
-                </div>
-              </td>
-              <th class="mdc-data-table__cell" scope="row" id="u0"> <span class="material-icons mdc-list-item__graphic" aria-hidden="true">close</span></th> 
-              <th class="mdc-data-table__cell" scope="row" id="u3" contenteditable="true">Arcus watch slowdown</th>
-              <td class="mdc-data-table__cell">Negligible</td>
-              <td class="mdc-data-table__cell">Triaged</td>
-              <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
-
-            </tr>
           </tbody>
         </table>
       </div>
@@ -188,21 +156,22 @@
   </div>
 
   <div id=fabContainer2>
-    <button class="mdc-fab mdc-fab--mini mdc-fab--touch foo-button">
+    <button class="mdc-fab mdc-fab--mini mdc-fab--touch foo-button" id='mdcFab2'>
       <div class="mdc-fab" style="background-color:darkslategray;"></div>
       <span class="material-icons mdc-fab__icon">view_list</span>
     </button>
   </div>
 
   <div id=fabContainer3>
-    <button class="mdc-fab mdc-fab--mini mdc-fab--touch foo-button">
+    <button class="mdc-fab mdc-fab--mini mdc-fab--touch foo-button" id='mdcFab3'>
       <div class="mdc-fab" style="background-color:darkslategray;"></div>
       <span class="material-icons mdc-fab__icon">note_add</span>
     </button>
   </div>
+  <script defer src="db.bundle.js"></script>
+  <script defer src="index.bundle.js"></script>
+  <script defer src="print.bundle.js"></script>
 
 </body>
-
-<script src="./index.bundle.js"> </script>
 
 </html>

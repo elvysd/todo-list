@@ -5,6 +5,7 @@ module.exports = {
   entry: {
       index: './src/index.js',
       print: './src/print.js',
+      db: './src/db.js',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -23,6 +24,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+
+        test: /\.js$|jsx/,
+      },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],

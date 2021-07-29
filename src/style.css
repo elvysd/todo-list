@@ -1,19 +1,14 @@
 @use '@material/button/mdc-button';
 @use '@material/button';
 
-/* clears the ‘X’ from Internet Explorer */
-input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }/* clears the ‘X’ from Chrome */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 
 * {
     padding: 0;
     margin: 0;
     font-family: 'Roboto';
-    max-width: 110vw;
+    font-size: 14px;
+
 
 }
 
@@ -23,6 +18,7 @@ h1 {
     padding: 16px;
     color: white;
     box-shadow: 5px 0 #eeeeee;
+    font-size: 32px;
 
 }
 
@@ -36,27 +32,56 @@ h1 {
 
 .mdc-data-table__header-cell {
     font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+.mdc-data-table__header-cell--checkbox {
+    padding-top: 16px;
 }
 
 #main-container {
     margin-top: 10px;
     margin-left: 270px;
+
+}
+
+.mdc-data-table__header-cell {
+    max-width: 25vw;
+    white-space: pre-line;
+    font-size: 16px;
 }
 
 .mdc-data-table__cell {
     max-width: 25vw;
     white-space: pre-line;
+    font-size: 16px;
+    min-height: 75px;
 }
-tasks-row {
+
+#tasks-row {
     max-width: 25vw;
     min-width: 25vw;
-
 }
+
+input, select {
+    cursor: pointer;
+}
+
 input[type="date"] {
     border: none;
+    min-width: 112.1px;
+    background-color: transparent;
+    border-radius: 10px;
+}
 
+input[type="time"] {
+    border: none;
+    min-width: 112.1px;
+    max-width: 112.1px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+    background-color: transparent;
 }
 
 .mdc-fab {
@@ -90,6 +115,16 @@ input[type="date"] {
     z-index: 101;
 }
 
+#priority {
+    border: none;
+    text-align: right;
+    margin-bottom: 18px;
+    padding: 5px 0 5px 0px;
+    min-width: 112.1px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
 #fabBackground {
     display: none;
     position: fixed;
@@ -107,10 +142,8 @@ input[type="date"] {
     position: absolute;
 }
 
-.mdc-cehckbox_background {
-    background-color:black; 
-    color:black; 
+.mdc-checkbox_background {
+    background-color: black;
+    color: black;
     fill: black;
 }
-
-
