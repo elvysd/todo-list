@@ -22,8 +22,12 @@ h1 {
 
 }
 
+.mdc-data-table__row {
+    min-height: 75px;
+}
+
 .mdc-data-table {
-    height: 98vh;
+    min-height: 98vh;
     position: absolute;
     min-width: 85vw;
     width: 100%;

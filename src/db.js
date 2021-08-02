@@ -47,14 +47,14 @@ export function addData() {
         time: "",
         Priority: "Low",
     }
-
-    let transaction = db.transaction = db.transaction(['notes_os'], 'readwrite');
+    console.log(db.transaction(['notes_os']));
+    let transaction = db.transaction(['notes_os'], 'readwrite');
 
     let objectStore = transaction.objectStore('notes_os');
 
     let request = objectStore.add(newItem);
     request.onsuccess = function () {
-
+        // clear
     }
 
     transaction.oncomplete = function () {
