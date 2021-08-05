@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import { addData } from './db.js';
+
 import './style.css';
 import {
     MDCRipple
@@ -66,5 +67,6 @@ var btn2 = document.getElementById('mdcFab2');
 btn2.onclick = function () {
     console.log('click');
     addData();
+
 }
 

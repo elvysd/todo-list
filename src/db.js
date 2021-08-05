@@ -54,13 +54,13 @@ export function addData() {
 
     let request = objectStore.add(newItem);
     request.onsuccess = function () {
-        // clear
+        // clear form
     }
 
     transaction.oncomplete = function () {
         console.log('Database modification finished');
 
-        //displayData();
+        displayData();
 
     }
 
@@ -70,17 +70,20 @@ export function addData() {
 }
 
 function displayData() {
-    while (ListeningStateChangedEvent.firstChild) {
-        ListeningStateChangedEvent.removeChild(list.firstChild);
+    let list = document.getElementById("tableBody");
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
     }
     let objectStore = db.transaction('notes_os').objectStore('notes_os');
     objectStore.openCursor().onsuccess = function(e) {
 
         let cursor = e.target.result;
         if(cursor) {
-            const listItem = document/createElement('li');
-            const h3 = document.createAttribute('h3');
-            const para = document.createElement('p')
+            const listItem = document.createElement('tr');
+            listItem.setAttribute('class', 'mdc-data-table__row');
+            listItem.setAttribute('data-row-id', 'u0');
+            const h3 = document.createElement('h3');
+            const para = document.createElement('p');
 
             listItem.appendChild(h3);
             listItem.appendChild(para);
@@ -89,13 +92,13 @@ function displayData() {
             h3.textContent = cursor.value.title;
             para.textContent = cursor.value.body;
 
-            listItem.setAttribute('data-note-id', cursor.value.id);
+            //listItem.setAttribute('data-note-id', cursor.value.id);
 
-            const deleteBtn = document.createElement('button');
-            listItem.appendChild(deleteBtn)
-            deleteBtn.textContnet = 'Delete';
+            //const deleteBtn = document.createElement('button');
+            //listItem.appendChild(deleteBtn)
+            //deleteBtn.textContnet = 'Delete';
 
-            deleteBtn.onclick = deleteItem;
+            //deleteBtn.onclick = deleteItem;
 
             cursor.continue();
         } else {
