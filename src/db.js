@@ -1,8 +1,11 @@
 // Database creation
 console.log("Sdsd");
 let db;
+
+deleteButton = document.getElementById("deleteButton");
+
 window.onload = function () {
-    let request = window.indexedDB.open('notes_db', 1);
+    let request = window.indexedDB.open("notes_os", 1);
 
     request.onerror = function () {
         console.log('Database failed to open');
@@ -12,7 +15,7 @@ window.onload = function () {
 
         db = request.result;
 
-        //displayData();
+        displayData();
     };
     request.onupgradeneeded = function (e) {
         let db = e.target.result;
@@ -70,6 +73,7 @@ export function addData() {
 }
 
 function displayData() {
+
     let list = document.getElementById("tableBody");
     while (list.firstChild) {
         list.removeChild(list.firstChild);
@@ -82,23 +86,58 @@ function displayData() {
             const listItem = document.createElement('tr');
             listItem.setAttribute('class', 'mdc-data-table__row');
             listItem.setAttribute('data-row-id', 'u0');
-            const h3 = document.createElement('h3');
-            const para = document.createElement('p');
+            const td1 = document.createElement('td');
+            td1.setAttribute('class', 'mdc-data-table__cell mdc-data-table__cell--checkbox');
+            td1.setAttribute('data-row-id', 'u0');
+            const td2 = document.createElement('td');
+            td2.setAttribute('class', 'mdc-data-table__cell');
+            td2.setAttribute('contenteditable', 'true');
+            const div = document.createElement('div');
+            div.setAttribute('class', 'mdc-checkbox mdc-data-table__row-checkbox');
+            div.setAttribute('data-row-id', 'u0');
+            const input = document.createElement('input');
+            input.setAttribute('class', 'mdc-checkbox__native-control');
+            input.setAttribute('aria-labelledby', 'u0');
+            input.setAttribute('type', 'checkbox');
+            const div2 = document.createElement('div');
+            div2.setAttribute('class', 'mdc-checkbox__background');
+            const svg = document.createElement('svg');
+            svg.setAttribute('class', 'mdc-checkbox__checkmark');
+            svg.setAttribute('viewBox', '0 0 24 24');
+            const path = document.createElement('svg');
+            path.setAttribute('class', 'mdc-checkbox__checkmark-path');
+            path.setAttribute('d', 'M1.73,12.91 8.1,19.28 22.79,4.59');
+            path.setAttribute('fill', 'none');
+            const div3 = document.createElement('div');
+            div3.setAttribute('class', 'mdc-checkbox__mixedmark');
+            const div4 = document.createElement('div');
+            div4.setAttribute('class', 'mdc-checkbox__ripple');
 
-            listItem.appendChild(h3);
-            listItem.appendChild(para);
+
+            div.appendChild(div4)
+            div2.appendChild(div3)
+            svg.appendChild(path);
+            div2.appendChild(svg);
+            div.appendChild(div2);
+            div.appendChild(input);
+            td1.appendChild(div);
+            listItem.appendChild(td1);
+            listItem.appendChild(td2);
+
             list.appendChild(listItem);
 
-            h3.textContent = cursor.value.title;
-            para.textContent = cursor.value.body;
+            //td1.textContent = cursor.value.title;
+            //td2.textContent = cursor.value.body;
 
             //listItem.setAttribute('data-note-id', cursor.value.id);
 
             //const deleteBtn = document.createElement('button');
             //listItem.appendChild(deleteBtn)
-            //deleteBtn.textContnet = 'Delete';
+            //deleteBtn.textContent = 'Delete';
 
             //deleteBtn.onclick = deleteItem;
+
+
 
             cursor.continue();
         } else {
@@ -109,7 +148,8 @@ function displayData() {
             }
             console.log('Notes all displayed');
         }
+        
     };
+    
 }
 
-        
