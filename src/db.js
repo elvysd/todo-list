@@ -2,7 +2,7 @@
 console.log("Sdsd");
 let db;
 
-deleteButton = document.getElementById("deleteButton");
+
 
 window.onload = function () {
     let request = window.indexedDB.open("notes_os", 1);
@@ -50,7 +50,6 @@ export function addData() {
         time: "",
         Priority: "Low",
     }
-    console.log(db.transaction(['notes_os']));
     let transaction = db.transaction(['notes_os'], 'readwrite');
 
     let objectStore = transaction.objectStore('notes_os');
@@ -74,7 +73,6 @@ export function addData() {
 let list = document.getElementById("tableBody");
 function displayData() {
 
-
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
@@ -89,8 +87,10 @@ function displayData() {
             const td1 = document.createElement('td');
             td1.setAttribute('class', 'mdc-data-table__cell mdc-data-table__cell--checkbox');
             td1.setAttribute('data-row-id', 'u0');
+            td1.setAttribute('id', 'u0');
+            td1.setAttribute('scope', 'row');
             const div = document.createElement('div');
-            div.setAttribute('class', 'mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--upgraded mdc-ripple-upgraded mdc-ripple-upgraded--unbounded');
+            div.setAttribute('class', 'mdc-checkbox mdc-data-table__row-checkbox');
             div.setAttribute('data-row-id', 'u0');
             const input = document.createElement('input');
             input.setAttribute('class', 'mdc-checkbox__native-control');
@@ -113,6 +113,9 @@ function displayData() {
             const td2 = document.createElement('td');
             td2.setAttribute('class', 'mdc-data-table__cell');
             td2.setAttribute('contenteditable', 'true');
+            let x = 0;
+            td2.setAttribute('id', 'u' + x);
+            x = x+1;
 
             const td3 = document.createElement('td');
             td3.setAttribute('class', 'mdc-data-table__cell');
@@ -125,6 +128,7 @@ function displayData() {
             input3.setAttribute('type', 'time');
             input3.setAttribute('id', 'time');
             input3.setAttribute('name', 'appt');
+            input3.setAttribute('value', '00:00');
 
             const td5 = document.createElement('td');
             td5.setAttribute('class', 'mdc-data-table__cell mdc-data-table__header-cell--numeric')
@@ -143,9 +147,12 @@ function displayData() {
 
             const th = document.createElement('th');
             th.setAttribute('class', 'mdc-data-table__cell');
+            th.setAttribute('id', 'wrapper');
             const span = document.createElement('span');
             span.setAttribute('class', 'material-icons mdc-list-item__graphic');
             span.textContent = "close";
+            span.setAttribute('id', 'xBox');
+
 
             // Checkbox
             div2.appendChild(svg);
@@ -178,20 +185,17 @@ function displayData() {
             // Delete
             th.appendChild(span);
             listItem.appendChild(th);
+            th.onclick = deleteItem;
 
+            // Parent
             list.appendChild(listItem);
+            listItem.setAttribute('data-note-id', cursor.value.id);
 
             //td1.textContent = cursor.value.title;
             //td2.textContent = cursor.value.body;
 
-            //listItem.setAttribute('data-note-id', cursor.value.id);
 
-            //const deleteBtn = document.createElement('button');
-            //listItem.appendChild(deleteBtn)
-            //deleteBtn.textContent = 'Delete';
-
-            //deleteBtn.onclick = deleteItem;
-
+ 
 
 
             cursor.continue();
@@ -205,6 +209,31 @@ function displayData() {
         }
         
     };
-    
 }
 
+function deleteData() {
+    let transaction = db.transaction(['notes_os'], 'readwrite');
+    let objectStore = transaction.objectStore('notes_os');
+    objectStore.clear();
+    displayData();
+}
+
+let deleteAll = document.getElementById('deleteButton');
+deleteAll.onclick = deleteData;
+
+function deleteItem(e) {
+    console.log(e.target.parentNode.getAttribute('data-note-id'));
+    let noteId = Number(e.target.parentNode.getAttribute('data-note-id'));
+    console.log(noteId);
+
+    let transaction = db.transaction(['notes_os'], 'readwrite');
+    let objectStore = transaction.objectStore('notes_os');
+
+    let request = objectStore.delete(noteId);
+
+    transaction.oncomplete = function() {
+        //e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+    }
+    displayData();
+    
+}

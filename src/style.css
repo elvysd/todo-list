@@ -86,7 +86,6 @@ input[type="time"] {
     border: none;
     min-width: 112.1px;
     max-width: 112.1px;
-    margin-bottom: 20px;
 
     border-radius: 10px;
     background-color: transparent;
@@ -126,7 +125,6 @@ input[type="time"] {
 #priority {
     border: none;
     text-align: right;
-    margin-bottom: 18px;
     padding: 5px 0 5px 0px;
     min-width: 112.1px;
     background-color: transparent;
@@ -154,4 +152,16 @@ input[type="time"] {
     background-color: black;
     color: black;
     fill: black;
+}
+
+#deleteButton {
+    cursor: pointer;
+}
+
+#xBox {
+    pointer-events: none;
+}
+
+#wrapper {
+    cursor: pointer;
 }
