@@ -42,10 +42,17 @@ window.onload = function () {
 };
 
 export { db };
+const interval = setInterval(function() {
+    //addData();
+    //console.log('sdsd');
+}, 1000);
+export function addData(e) {
+    console.log('sdsssssssssd');
+    let tasksHtml = document.getElementById('u0').innerHTML;
 
-export function addData() {
+
     let newItem = {
-        tasks: 'Task',
+        tasks: tasksHtml,
         date: "",
         time: "",
         Priority: "Low",
@@ -61,9 +68,7 @@ export function addData() {
 
     transaction.oncomplete = function () {
         console.log('Database modification finished');
-
         displayData();
-
     }
 
     transaction.onerror = function () {
@@ -71,6 +76,7 @@ export function addData() {
     };
 }
 let list = document.getElementById("tableBody");
+let x = 0;
 function displayData() {
 
     while (list.firstChild) {
@@ -83,18 +89,18 @@ function displayData() {
         if(cursor) {
             const listItem = document.createElement('tr');
             listItem.setAttribute('class', 'mdc-data-table__row');
-            listItem.setAttribute('data-row-id', 'u0');
+            //listItem.setAttribute('data-row-id', 'u0');
             const td1 = document.createElement('td');
             td1.setAttribute('class', 'mdc-data-table__cell mdc-data-table__cell--checkbox');
             td1.setAttribute('data-row-id', 'u0');
-            td1.setAttribute('id', 'u0');
+            //td1.setAttribute('id', 'u0');
             td1.setAttribute('scope', 'row');
             const div = document.createElement('div');
             div.setAttribute('class', 'mdc-checkbox mdc-data-table__row-checkbox');
             div.setAttribute('data-row-id', 'u0');
             const input = document.createElement('input');
             input.setAttribute('class', 'mdc-checkbox__native-control');
-            input.setAttribute('aria-labelledby', 'u0');
+            //input.setAttribute('aria-labelledby', 'u0');
             input.setAttribute('type', 'checkbox');
             const div2 = document.createElement('div');
             div2.setAttribute('class', 'mdc-checkbox__background');
@@ -113,7 +119,7 @@ function displayData() {
             const td2 = document.createElement('td');
             td2.setAttribute('class', 'mdc-data-table__cell');
             td2.setAttribute('contenteditable', 'true');
-            let x = 0;
+            td2.textContent = "Enter note here";
             td2.setAttribute('id', 'u' + x);
             x = x+1;
 
@@ -193,8 +199,12 @@ function displayData() {
 
             //td1.textContent = cursor.value.title;
             //td2.textContent = cursor.value.body;
+            console.log(cursor.value.id.length);
+            for (let i = 0; i <  cursor.value.id.length; i++) {
+                let tasksHtml = document.getElementById('u' + i).innerHTML;
 
-
+                tasksHtml.textContent = tasksHtml;
+            }
  
 
 
