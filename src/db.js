@@ -71,10 +71,10 @@ export function addData() {
         console.log('Transaction not opened due to error');
     };
 }
-
+let list = document.getElementById("tableBody");
 function displayData() {
 
-    let list = document.getElementById("tableBody");
+
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
@@ -89,11 +89,8 @@ function displayData() {
             const td1 = document.createElement('td');
             td1.setAttribute('class', 'mdc-data-table__cell mdc-data-table__cell--checkbox');
             td1.setAttribute('data-row-id', 'u0');
-            const td2 = document.createElement('td');
-            td2.setAttribute('class', 'mdc-data-table__cell');
-            td2.setAttribute('contenteditable', 'true');
             const div = document.createElement('div');
-            div.setAttribute('class', 'mdc-checkbox mdc-data-table__row-checkbox');
+            div.setAttribute('class', 'mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--upgraded mdc-ripple-upgraded mdc-ripple-upgraded--unbounded');
             div.setAttribute('data-row-id', 'u0');
             const input = document.createElement('input');
             input.setAttribute('class', 'mdc-checkbox__native-control');
@@ -104,7 +101,7 @@ function displayData() {
             const svg = document.createElement('svg');
             svg.setAttribute('class', 'mdc-checkbox__checkmark');
             svg.setAttribute('viewBox', '0 0 24 24');
-            const path = document.createElement('svg');
+            const path = document.createElement('path');
             path.setAttribute('class', 'mdc-checkbox__checkmark-path');
             path.setAttribute('d', 'M1.73,12.91 8.1,19.28 22.79,4.59');
             path.setAttribute('fill', 'none');
@@ -113,16 +110,74 @@ function displayData() {
             const div4 = document.createElement('div');
             div4.setAttribute('class', 'mdc-checkbox__ripple');
 
+            const td2 = document.createElement('td');
+            td2.setAttribute('class', 'mdc-data-table__cell');
+            td2.setAttribute('contenteditable', 'true');
 
-            div.appendChild(div4)
+            const td3 = document.createElement('td');
+            td3.setAttribute('class', 'mdc-data-table__cell');
+            const input2 = document.createElement('input');
+            input2.setAttribute('type', 'date');
+
+            const td4 = document.createElement('td');
+            td4.setAttribute('class', 'mdc-data-table__cell');
+            const input3 = document.createElement('input');
+            input3.setAttribute('type', 'time');
+            input3.setAttribute('id', 'time');
+            input3.setAttribute('name', 'appt');
+
+            const td5 = document.createElement('td');
+            td5.setAttribute('class', 'mdc-data-table__cell mdc-data-table__header-cell--numeric')
+            const select = document.createElement('select');
+            select.setAttribute('id', 'priority');
+            select.setAttribute('name', 'priority');
+            const option1 = document.createElement('option');
+            option1.setAttribute('value', 'high');
+            option1.textContent = "High";
+            const option2 = document.createElement('option');
+            option2.setAttribute('value', 'med');
+            option2.textContent = "Medium";
+            const option3 = document.createElement('option');
+            option3.setAttribute('value', 'low');
+            option3.textContent = "Low";
+
+            const th = document.createElement('th');
+            th.setAttribute('class', 'mdc-data-table__cell');
+            const span = document.createElement('span');
+            span.setAttribute('class', 'material-icons mdc-list-item__graphic');
+            span.textContent = "close";
+
+            // Checkbox
+            div2.appendChild(svg);
             div2.appendChild(div3)
             svg.appendChild(path);
-            div2.appendChild(svg);
-            div.appendChild(div2);
             div.appendChild(input);
+            div.appendChild(div2);
+            div.appendChild(div4)
             td1.appendChild(div);
             listItem.appendChild(td1);
+
+            // Task
             listItem.appendChild(td2);
+
+            // Date
+            td3.appendChild(input2);
+            listItem.appendChild(td3);
+
+            // Time
+            td4.appendChild(input3);
+            listItem.appendChild(td4);
+
+            // Priority
+            select.appendChild(option1);
+            select.appendChild(option2);
+            select.appendChild(option3);
+            td5.appendChild(select);
+            listItem.appendChild(td5);
+
+            // Delete
+            th.appendChild(span);
+            listItem.appendChild(th);
 
             list.appendChild(listItem);
 

@@ -8,9 +8,10 @@
     margin: 0;
     font-family: 'Roboto';
     font-size: 14px;
-
-
+    --mdc-theme-secondary: #304ffe;
 }
+
+
 
 h1 {
     background-color: #304ffe;
@@ -23,7 +24,7 @@ h1 {
 }
 
 .mdc-data-table__row {
-    min-height: 75px;
+    min-height: 100px;
 }
 
 .mdc-data-table {
