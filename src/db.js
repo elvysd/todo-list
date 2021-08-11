@@ -1,5 +1,5 @@
 // Database creation
-console.log("Sdsd");
+console.log("db.js called");
 let db;
 
 
@@ -42,17 +42,13 @@ window.onload = function () {
 };
 
 export { db };
-const interval = setInterval(function() {
-    //addData();
-    //console.log('sdsd');
-}, 1000);
-export function addData(e) {
-    console.log('sdsssssssssd');
-    let tasksHtml = document.getElementById('u0').innerHTML;
 
+//document.querySelectorAll('mdc-data-table__cell').addEventListener("change", addData)
+export function addData(e) {
+    console.log('adddata call');
 
     let newItem = {
-        tasks: tasksHtml,
+       tasks: "",
         date: "",
         time: "",
         Priority: "Low",
@@ -75,6 +71,7 @@ export function addData(e) {
         console.log('Transaction not opened due to error');
     };
 }
+
 let list = document.getElementById("tableBody");
 let x = 0;
 function displayData() {
@@ -118,23 +115,25 @@ function displayData() {
 
             const td2 = document.createElement('td');
             td2.setAttribute('class', 'mdc-data-table__cell');
-            td2.setAttribute('contenteditable', 'true');
-            td2.textContent = "Enter note here";
-            td2.setAttribute('id', 'u' + x);
+            const input2 = document.createElement('input');
+            input2.setAttribute('placeholder', 'Enter note here');
+            input2.setAttribute('id', 'u' + x);
+            input2.setAttribute('class', 'task');
+
             x = x+1;
 
             const td3 = document.createElement('td');
             td3.setAttribute('class', 'mdc-data-table__cell');
-            const input2 = document.createElement('input');
-            input2.setAttribute('type', 'date');
+            const input3 = document.createElement('input');
+            input3.setAttribute('type', 'date');
 
             const td4 = document.createElement('td');
             td4.setAttribute('class', 'mdc-data-table__cell');
-            const input3 = document.createElement('input');
-            input3.setAttribute('type', 'time');
-            input3.setAttribute('id', 'time');
-            input3.setAttribute('name', 'appt');
-            input3.setAttribute('value', '00:00');
+            const input4 = document.createElement('input');
+            input4.setAttribute('type', 'time');
+            input4.setAttribute('id', 'time');
+            input4.setAttribute('name', 'appt');
+            input4.setAttribute('value', '00:00');
 
             const td5 = document.createElement('td');
             td5.setAttribute('class', 'mdc-data-table__cell mdc-data-table__header-cell--numeric')
@@ -171,14 +170,15 @@ function displayData() {
             listItem.appendChild(td1);
 
             // Task
+            td2.appendChild(input2);
             listItem.appendChild(td2);
 
             // Date
-            td3.appendChild(input2);
+            td3.appendChild(input3);
             listItem.appendChild(td3);
 
             // Time
-            td4.appendChild(input3);
+            td4.appendChild(input4);
             listItem.appendChild(td4);
 
             // Priority
@@ -199,14 +199,6 @@ function displayData() {
 
             //td1.textContent = cursor.value.title;
             //td2.textContent = cursor.value.body;
-            console.log(cursor.value.id.length);
-            for (let i = 0; i <  cursor.value.id.length; i++) {
-                let tasksHtml = document.getElementById('u' + i).innerHTML;
-
-                tasksHtml.textContent = tasksHtml;
-            }
- 
-
 
             cursor.continue();
         } else {

@@ -71,6 +71,12 @@ mdc-data-table__table-container, mdc-data-table__table {
     min-width: 25vw;
 }
 
+.task {
+    border: none;
+    background-color: transparent;
+    min-width: 25vw;
+}   
+
 input, select {
     cursor: pointer;
 }
@@ -148,11 +154,6 @@ input[type="time"] {
     position: absolute;
 }
 
-.mdc-checkbox_background {
-    background-color: black;
-    color: black;
-    fill: black;
-}
 
 #deleteButton {
     cursor: pointer;
